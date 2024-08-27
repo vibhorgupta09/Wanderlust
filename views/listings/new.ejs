@@ -1,0 +1,22 @@
+<% layout('/layouts/boilerplate') -%>
+<body>
+    <br>
+    <br>
+    <h3>Add new listing</h3>
+    <br>
+    <form action="/listings" method="post" class="needs-validation" >
+        <input type="text" name="listing[title]" placeholder="enter title" required>
+        <br><br>
+        <input type="text" name="listing[description]" placeholder="enter description" required>
+        <br><br>
+        <input type="text" name="listing[image]" placeholder="enter image url/link">
+        <br><br>
+        <input type="number" name="listing[price]" placeholder="enter price" required>
+        <br><br>
+        <input type="text" name="listing[location]" placeholder="enter location" required>
+        <br><br>
+        <input type="text" name="listing[country]" placeholder="enter country" required>
+        <br><br>
+        <button class="addBtn btn btn-dark">ADD</button>
+    </form>
+</body>

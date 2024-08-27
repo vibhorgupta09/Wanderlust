@@ -1,0 +1,20 @@
+<% layout('/layouts/boilerplate') -%>
+
+<body>
+    <br>
+    <br>
+    <h3>SignUp on Wanderlust</h3>
+    <br>
+    <form action="/signup" method="post" class="needs-validation" >
+        <input type="text" name="username" placeholder="enter username" required>
+        <div class="valid-feedback">looks good!</div>
+        <br><br>
+        <input type="email" name="email" placeholder="enter email" required>
+        <br><br>
+        <input type="password" name="password" placeholder="enter password" required>
+        <br><br>
+        <button class="addBtn btn btn-dark">SignUp</button>
+        <br><br>
+        
+    </form>
+</body>
