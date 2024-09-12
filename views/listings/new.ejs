@@ -4,12 +4,12 @@
     <br>
     <h3>Add new listing</h3>
     <br>
-    <form action="/listings" method="post" class="needs-validation" >
+    <form action="/listings" method="post" class="needs-validation" enctype="multipart/form-data">
         <input type="text" name="listing[title]" placeholder="enter title" required>
         <br><br>
         <input type="text" name="listing[description]" placeholder="enter description" required>
         <br><br>
-        <input type="text" name="listing[image]" placeholder="enter image url/link">
+        <input type="file" name="listing[image]" placeholder="Upload listing image" required>
         <br><br>
         <input type="number" name="listing[price]" placeholder="enter price" required>
         <br><br>
@@ -17,6 +17,29 @@
         <br><br>
         <input type="text" name="listing[country]" placeholder="enter country" required>
         <br><br>
+        <button type="button" onclick="toggleCheckboxes()" class="btn btn-primary">Select Category</button>
+        <div id="checkbox-container" style="display:none; margin-top: 10px;">
+            <label><input type="checkbox" name="listing[category][]" value="rooms"> Rooms</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="iconic-cities"> Iconic Cities</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="mountains"> Mountains</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="castles"> Castles</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="amazing-pools"> Amazing Pools</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="camping"> Camping</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="farms"> Farms</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="arctic"> Arctic</label>
+        </div>
+        <br><br>
         <button class="addBtn btn btn-dark">ADD</button>
     </form>
+
+    <script>
+        function toggleCheckboxes() {
+            var checkboxes = document.getElementById("checkbox-container");
+            if (checkboxes.style.display === "none") {
+                checkboxes.style.display = "block";
+            } else {
+                checkboxes.style.display = "none";
+            }
+        }
+    </script>
 </body>

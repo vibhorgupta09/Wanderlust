@@ -3,12 +3,16 @@
     <br>
     <h3>Edit your listing</h3>
     <br>
-    <form action="/listings/<%= listing._id %>?_method=PUT" method="post">
+    <form action="/listings/<%= listing._id %>?_method=PUT" method="post" enctype="multipart/form-data">
         <input type="text" name="listing[title]" value="<%= listing.title %>">
         <br><br>
         <input type="text" name="listing[description]" value="<%= listing.description %>">
         <br><br>
-        <input type="text" name="listing[image]" value="<%= listing.image %>">
+        <div class="mb-3">
+            <p>Orignal Listing image</p>
+            <img src="<%=orignalImageUrl%>" alt="">
+        </div>
+        <input type="file" name="listing[image]">
         <br><br>
         <input type="number" name="listing[price]"  value="<%= listing.price %>">
         <br><br>
@@ -16,6 +20,34 @@
         <br><br>
         <input type="text" name="listing[country]"  value="<%= listing.country %>">
         <br><br>
+        <p>Categories : &nbsp;
+        <% for(cat of listing.category){%>
+            <span><%=cat%> , </span>
+        <% } %>
+        </p>
+        
+        <button type="button" onclick="toggleCheckboxes()" class="btn btn-primary">Select new Categories</button>
+        <div id="checkbox-container" style="display:none; margin-top: 10px;">
+            <label><input type="checkbox" name="listing[category][]" value="rooms"> Rooms</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="iconic-cities"> Iconic Cities</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="mountains"> Mountains</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="castles"> Castles</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="amazing-pools"> Amazing Pools</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="camping"> Camping</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="farms"> Farms</label><br>
+            <label><input type="checkbox" name="listing[category][]" value="arctic"> Arctic</label>
+        </div>
+        <br><br>
         <button class="addBtn btn btn-dark">EDIT</button>
     </form>
+    <script>
+        function toggleCheckboxes() {
+            var checkboxes = document.getElementById("checkbox-container");
+            if (checkboxes.style.display === "none") {
+                checkboxes.style.display = "block";
+            } else {
+                checkboxes.style.display = "none";
+            }
+        }
+    </script>
 </body>

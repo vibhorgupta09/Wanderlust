@@ -12,9 +12,8 @@ const listingSchema= new mongoose.Schema({
         type:String
     },
     image:{
-        type: String,
-        default:"https://unsplash.com/photos/gray-wooden-house-178j8tJrNlc",
-        set: (v) => v===""? "https://unsplash.com/photos/gray-wooden-house-178j8tJrNlc": v,
+        url:String,
+        filename:String
     },
     price:Number,
     location:String,
@@ -26,7 +25,20 @@ const listingSchema= new mongoose.Schema({
     owner:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+    geometry:{
+        type: {
+            type: String, // Don't do `{ location: { type: String } }`
+            enum: ['Point'], // 'location.type' must be 'Point'
+          },
+          coordinates: {
+            type: [Number],
+          }
+    },
+    category: [{
+        type: String,
+        enum: ["rooms", "iconic-cities", "mountains", "castles", "amazing-pools", "camping", "farms", "arctic"]
+    }]
 });
 
 listingSchema.post("findOneAndDelete",async(listing)=>{

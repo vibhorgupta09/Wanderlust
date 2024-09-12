@@ -70,3 +70,10 @@ body{
     background-color: #fe424d;
     border: none;
 }
+
+/* map */
+
+#map{
+    height: 400px;
+    width: 80vh;
+}
